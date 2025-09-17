@@ -65,6 +65,20 @@ app.use((req, res, next) => {
 // Middleware: Serve all static files (HTML, CSS, JS, images, etc.) from the "public" folder
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+// Log ALL /api/auth requests for debugging
+app.use('/api/auth', (req, res, next) => {
+  logger.info('API AUTH REQUEST RECEIVED', {
+    method: req.method,
+    path: req.path,
+    url: req.url,
+    body: req.body,
+    query: req.query,
+    headers: req.headers,
+    action: 'api_auth_request'
+  });
+  next();
+});
+
 // Mount authentication routes at the path "/api/auth"
 // e.g., /api/auth/register, /api/auth/login
 app.use('/api/auth', authRoutes);
