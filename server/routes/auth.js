@@ -55,6 +55,15 @@ const Plan = mongoose.model('Plan', planSchema);
 
 // Register
 router.post('/register', async (req, res) => {
+  // Log raw request for debugging
+  logger.info('REGISTER ENDPOINT HIT', {
+    method: req.method,
+    url: req.url,
+    body: req.body,
+    headers: req.headers,
+    action: 'register_endpoint_accessed'
+  });
+  
   logger.info('User registration attempt', {
     email: req.body.email,
     role: req.body.role,
@@ -138,6 +147,15 @@ router.post('/register', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
+  // Log raw request for debugging
+  logger.info('LOGIN ENDPOINT HIT', {
+    method: req.method,
+    url: req.url,
+    body: req.body,
+    headers: req.headers,
+    action: 'login_endpoint_accessed'
+  });
+  
   const { email, password, role } = req.body;
   
   logger.info('User login attempt', {
