@@ -53,5 +53,5 @@ spec:
   ports:
   - port: 80
     targetPort: 5000
-  type: Node Port
+  type: LoadBalancer
   
