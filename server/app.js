@@ -14,7 +14,7 @@ const app = express();
 require('dotenv').config();
 
 // MongoDB connection with environment variable support
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/fitness-tracker';
+const MONGODB_URI = process.env.MONGODB_URI ;
 
 // Connect to MongoDB with error handling and retry logic
 const connectDB = async () => {
